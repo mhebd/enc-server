@@ -32,17 +32,4 @@ app.get('/api/v1', (req, res) => {
 // Show Error Message
 app.use(error);
 
-//->Show UI...
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
-
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-	});
-} else if (process.env.NODE_ENV === 'development') {
-	app.get('/', (req, res) => {
-		res.send('Hello, Developer...');
-	});
-}
-
 module.exports = app;
